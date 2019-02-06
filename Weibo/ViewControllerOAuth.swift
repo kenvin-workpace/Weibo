@@ -8,10 +8,16 @@
 
 import UIKit
 import WebKit
+import SVProgressHUD
 
 class ViewControllerOAuth: UIViewController {
     
     private lazy var webView = WKWebView()
+    
+    let baidu = "baidu.com"
+    let weibo = "weibo.com"
+    let failure = "error_uri"
+    let success = "code="
     
     override func loadView() {
         view = webView
@@ -33,39 +39,67 @@ extension ViewControllerOAuth : WKNavigationDelegate{
         webView.load(URLRequest(url: WeiboNet.build.oAuthUrl))
     }
     
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        SVProgressHUD.show()
+    }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        SVProgressHUD.dismiss()
+    }
+    
     func webView(_ webView: WKWebView, decidePolicyFor navigationResponse: WKNavigationResponse, decisionHandler: @escaping (WKNavigationResponsePolicy) -> Void) {
         print("url__"+String(describing: webView.url?.host)+"___"+String(describing: webView.url?.query))
         let url = webView.url
-        let baidu = "baidu.com"
-        let failure = "error_uri"
-        let success = "code="
         
-        //是否是微博授权URL
-        if url?.host?.hasSuffix(baidu) ?? false,url?.query?.hasPrefix(success) ?? false {
-            //截取code
-            let result = url?.query
-            let key = result!.firstIndex(of: "&")
-            var code:String = ""
-            if key==nil{
-                code = String(result![success.endIndex..<result!.endIndex])
-            }else{
-                code = String(result![success.endIndex..<key!])
-            }
-            print("<< code >>,\(code)")
+        //有微博域名，且重定向URL有百度
+        if url?.host?.hasSuffix(weibo) ?? false,url?.query?.hasSuffix(baidu) ?? false {
+            decisionHandler(WKNavigationResponsePolicy.allow)
+            return
+        }
+        //授权成功
+        if url?.host?.hasSuffix(baidu) ?? false,url?.query?.hasPrefix(success) ?? false{
             decisionHandler(WKNavigationResponsePolicy.cancel)
+            
+            let code = getCode(url: url!)
             //获取accessToken
-            TokenInfoModel.shareInstance.getAccessToken(code: code) { (iSuccess) in
-                iSuccess ? print("获取成功") : print("获取成功")
+            AccountInfoModel.shareInstance.getAccessToken(code: code) { (iSuccess) in
+                if !iSuccess{
+                    SVProgressHUD.dismiss()
+                    print("OAUTH 获取失败")
+                    return
+                }
+                self.dismiss(animated: false, completion: {
+                    NotificationCenter.default.post(name: CUSTOM_SWITCH_NOTIFICATIONCENTER, object: "welcome")
+                })
             }
+            
+            SVProgressHUD.dismiss()
             return
         }
-        //允许跳转
-        decisionHandler(WKNavigationResponsePolicy.allow)
-        //授权取消，返回未登录界面
-        if url?.host==baidu,url?.query?.hasPrefix(failure) ?? false{
-            dismiss(animated: true, completion: nil)
+        //授权失败
+        if url?.host?.hasSuffix(weibo) ?? true,url?.query == nil{
+            SVProgressHUD.showError(withStatus: "\n授权失败，请重试")
+            decisionHandler(WKNavigationResponsePolicy.cancel)
             return
         }
+        //取消授权
+        if url?.host?.hasSuffix(weibo) == true,url?.query?.hasPrefix(failure) ?? true{
+            SVProgressHUD.showError(withStatus: "\n取消授权，请重试")
+            decisionHandler(WKNavigationResponsePolicy.cancel)
+            return
+        }
+    }
+    
+    func getCode(url:URL) -> String {
+        let result = url.query
+        let key = result!.firstIndex(of: "&")
+        var code:String = ""
+        if key==nil{
+            code = String(result![success.endIndex..<result!.endIndex])
+        }else{
+            code = String(result![success.endIndex..<key!])
+        }
+        return code
     }
 }
 
@@ -84,6 +118,7 @@ extension ViewControllerOAuth{
     }
     
     @objc private func clickClose(){
+        SVProgressHUD.dismiss()
         dismiss(animated: true, completion: nil)
     }
     

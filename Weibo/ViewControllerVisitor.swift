@@ -10,7 +10,7 @@ import UIKit
 
 class ViewControllerVisitor: UITableViewController {
     
-    var isVisitor:Bool = TokenInfoModel.shareInstance.isLoginStatus
+    var isVisitor:Bool = false //AccountInfoModel.shareInstance.isLoginStatus
     
     var visitorView:UIViewVisitor?
     

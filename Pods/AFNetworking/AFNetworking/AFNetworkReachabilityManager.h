@@ -112,7 +112,7 @@ NS_ASSUME_NONNULL_BEGIN
  *
  *  @return nil as this method is unavailable
  */
-- (nullable instancetype)init NS_UNAVAILABLE;
+//- (nullable instancetype)init NS_UNAVAILABLE;
 
 ///--------------------------------------------------
 /// @name Starting & Stopping Reachability Monitoring

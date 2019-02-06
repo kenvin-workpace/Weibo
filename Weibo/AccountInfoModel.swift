@@ -8,52 +8,57 @@
 
 import Foundation
 
-class TokenInfoModel {
+class AccountInfoModel {
     
     //单例
-    static let shareInstance = TokenInfoModel()
+    static let shareInstance = AccountInfoModel()
     
     //用户模型
-    var tokenInfo:TokenInfo?
+    var account:AccountInfo?
     
     private init() {
         // 从存档取数据
-        tokenInfo = getTokenFromPlist()
+        account = getAccountFromPlist()
         //判断账号是否过期
         if isExpired {
-            tokenInfo = nil
-            print("账号过期")
+            account = nil
         }
     }
     
 }
 
-extension TokenInfoModel{
+extension AccountInfoModel{
     
+    ///判断用户是否登录
     var isLoginStatus : Bool{
-        return tokenInfo?.access_token != nil && !isExpired
+        return account?.access_token != nil && !isExpired
     }
     
     ///判断账号是否过期
     var isExpired:Bool{
         //是否登录过
-        guard let expire = tokenInfo?.expires_in else {
+        guard let expire = account?.expires_in else {
             return true
         }
         //是否过期
-        if WeiboUtil.build.int2NSDate(time: expire).compare(Date()) == ComparisonResult.orderedDescending{
+        if WeiboUtil.shareInstance.int2NSDate(time: expire).compare(Date()) == ComparisonResult.orderedDescending{
             return false
         }
         //过期返回true
         return true;
     }
     
+    /// 获取用户头像
+    var headPic:URL{
+        return NSURL(string: account?.avatar_large ?? "")! as URL
+    }
+    
     /// 从存档取数据
-    func getTokenFromPlist() -> TokenInfo? {
-        let url = NSURL(fileURLWithPath: WeiboUtil.build.path) as URL
+    func getAccountFromPlist() -> AccountInfo? {
+        let url = NSURL(fileURLWithPath: WeiboUtil.shareInstance.path) as URL
         let data = try? Data(contentsOf: url)
         if data != nil {
-            return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [TokenInfo.classForKeyedUnarchiver()], from: data!) as! TokenInfo
+            return try? NSKeyedUnarchiver.unarchivedObject(ofClasses: [AccountInfo.classForKeyedUnarchiver()], from: data!) as! AccountInfo
         }else{
             print("account.plist is nil")
         }
@@ -61,7 +66,7 @@ extension TokenInfoModel{
     }
 }
 
-extension TokenInfoModel{
+extension AccountInfoModel{
     
     /// 获取accessToken
     func getAccessToken(code:String,callback:@escaping (_ isSuccess:Bool)->()) -> Void {
@@ -72,14 +77,14 @@ extension TokenInfoModel{
                 return
             }
             print("ViewControllerOAuth,method:getAccessToken,result:\(String(describing: result))")
-            let info = TokenInfo(dict: result as! [String : Any])
+            self.account = AccountInfo(dict: result as! [String : Any])
             // 获取 user show
-            self.loadUserShow(tokenInfo: info,complete: callback )
+            self.loadUserShow(tokenInfo: self.account!,complete: callback )
         }
     }
     
     /// 获取 user show
-    func loadUserShow(tokenInfo:TokenInfo,complete:@escaping (_ isSuccess:Bool)->()) -> Void {
+    func loadUserShow(tokenInfo:AccountInfo,complete:@escaping (_ isSuccess:Bool)->()) -> Void {
         WeiboNet.build.loadUseShow(token: tokenInfo.access_token!, uid: tokenInfo.uid!) { (result, error) in
             if error != nil{
                 print("ViewControllerOAuth,method:loadUserShow,error:\(String(describing: error))")
@@ -96,7 +101,7 @@ extension TokenInfoModel{
             //存档
             tokenInfo.saveAccount()
             //成功标志
-            complete(true)
+            complete(false)
         }
     }
 }

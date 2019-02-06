@@ -15,7 +15,6 @@ class ViewControllerMain: UITabBarController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
         
         //创建TabBarItem
         init_tabBarItem_childs()
@@ -46,10 +45,7 @@ extension ViewControllerMain{
     }
     
     @objc private func clickProfile() -> Void {
-        let vc = ViewControllerOAuth()
-        //添加导航栏
-        let nav = UINavigationController(rootViewController: vc)
-        present(nav, animated: true, completion: nil)
+        print("菜单栏+号，被点击了")
     }
 }
 

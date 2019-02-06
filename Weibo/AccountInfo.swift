@@ -8,7 +8,7 @@
 
 import UIKit
 
-class TokenInfo: NSObject,NSCoding,NSSecureCoding{
+class AccountInfo: NSObject,NSCoding,NSSecureCoding{
     
     static var supportsSecureCoding: Bool = true
     
@@ -31,7 +31,7 @@ class TokenInfo: NSObject,NSCoding,NSSecureCoding{
     // 存档
     func saveAccount() -> Void {
         let data =  try? NSKeyedArchiver.archivedData(withRootObject: self, requiringSecureCoding: true)
-        let url = NSURL(fileURLWithPath: WeiboUtil.build.path) as URL
+        let url = NSURL(fileURLWithPath: WeiboUtil.shareInstance.path) as URL
         try? data?.write(to: url)
     }
     

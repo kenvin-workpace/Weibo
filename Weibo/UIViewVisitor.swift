@@ -107,30 +107,40 @@ extension UIViewVisitor{
         }
         
         //圆图片
-        addConstraint(NSLayoutConstraint(item: iconImg, attribute: .centerX, relatedBy: .equal, toItem: self, attribute: .centerX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: iconImg, attribute: .centerY, relatedBy: .equal, toItem: self, attribute: .centerY, multiplier: 1.0, constant: -65))
+        iconImg.snp.makeConstraints { (view) in
+            view.centerX.equalTo(snp.centerX)
+            view.centerY.equalTo(snp.centerY).offset(-65)
+        }
         //小房子
-        addConstraint(NSLayoutConstraint(item: houseImg, attribute: .centerX, relatedBy: .equal, toItem: iconImg, attribute: .centerX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: houseImg, attribute: .centerY, relatedBy: .equal, toItem: iconImg, attribute: .centerY, multiplier: 1.0, constant: 0))
+        houseImg.snp.makeConstraints { (view) in
+            view.center.equalTo(iconImg.snp.center)
+        }
         //文本
-        addConstraint(NSLayoutConstraint(item: textLabel, attribute: .centerX, relatedBy: .equal, toItem: iconImg, attribute: .centerX, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: textLabel, attribute: .top, relatedBy: .equal, toItem: iconImg, attribute: .bottom, multiplier: 1.0, constant: 10))
-        addConstraint(NSLayoutConstraint(item: textLabel, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: getScreenWidth()-64))
-        addConstraint(NSLayoutConstraint(item: textLabel, attribute: .height, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 20))
+        textLabel.snp.makeConstraints { (view) in
+            view.centerX.equalTo(iconImg.snp.centerX)
+            view.top.equalTo(iconImg.snp.bottom).offset(10)
+            view.width.equalTo(WeiboUtil.shareInstance.getScreenBounds().width-64)
+            view.height.equalTo(40)
+        }
         //注册按钮
-        addConstraint(NSLayoutConstraint(item: registerBtn, attribute: .left, relatedBy: .equal, toItem: textLabel, attribute: .left, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: registerBtn, attribute: .top, relatedBy: .equal, toItem: textLabel, attribute: .bottom, multiplier: 1.0, constant: 30))
-        addConstraint(NSLayoutConstraint(item: registerBtn, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100))
+        registerBtn.snp.makeConstraints { (view) in
+            view.left.equalTo(textLabel.snp.left)
+            view.top.equalTo(textLabel.snp.bottom).offset(30)
+            view.width.equalTo(100)
+        }
         //登录按钮
-        addConstraint(NSLayoutConstraint(item: loginBtn, attribute: .right, relatedBy: .equal, toItem: textLabel, attribute: .right, multiplier: 1.0, constant: 0))
-        addConstraint(NSLayoutConstraint(item: loginBtn, attribute: .top, relatedBy: .equal, toItem: textLabel, attribute: .bottom, multiplier: 1.0, constant: 25))
-        addConstraint(NSLayoutConstraint(item: loginBtn, attribute: .width, relatedBy: .equal, toItem: nil, attribute: .notAnAttribute, multiplier: 1.0, constant: 100))
+        loginBtn.snp.makeConstraints { (view) in
+            view.right.equalTo(textLabel.snp.right)
+            view.top.equalTo(registerBtn.snp.top)
+            view.width.equalTo(100)
+        }
         //遮罩
-        //VFL：可视格式化语言 H：水平方向 V：垂直方向 |：边界 []：包装控件
-        //views：是一个字典[名字：控件名]
-        //metrics：是一个字典[名字：NSNumber]
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "H:|-0-[mask]-0-|", options: [], metrics: nil, views: ["mask":darkImg]))
-        addConstraints(NSLayoutConstraint.constraints(withVisualFormat: "V:|-0-[mask]-(btnHeight)-[regBtn]", options: [], metrics: ["btnHeight":-40], views: ["mask":darkImg,"regBtn":registerBtn]))
+        darkImg.snp.makeConstraints { (view) in
+            view.left.equalTo(snp.left)
+            view.right.equalTo(snp.right)
+            view.top.equalTo(snp.top)
+            view.bottom.equalTo(registerBtn.snp.bottom)
+        }
     }
     
     /// 自动旋转
@@ -142,10 +152,5 @@ extension UIViewVisitor{
         animation.isRemovedOnCompletion = false
         animation.duration = 10
         iconImg.layer.add(animation, forKey: nil)
-    }
-    
-    /// 屏幕宽度
-    @objc private func getScreenWidth() -> CGFloat{
-        return UIScreen.main.bounds.width
     }
 }

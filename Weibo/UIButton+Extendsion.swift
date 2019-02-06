@@ -32,5 +32,7 @@ extension UIButton {
         setTitleColor(color, for: UIControl.State.normal)
         //按钮背景图片
         setBackgroundImage(UIImage(named: backgroundImg), for: UIControl.State.normal)
+        //根据背景图片自适应大小
+        sizeToFit()
     }
 }

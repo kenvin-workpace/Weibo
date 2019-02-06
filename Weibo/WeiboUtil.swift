@@ -10,7 +10,7 @@ import UIKit
 
 class WeiboUtil: NSObject {
     
-    static let build = WeiboUtil()
+    static let shareInstance = WeiboUtil()
     
     /// 路径
     var path:String{
@@ -18,10 +18,16 @@ class WeiboUtil: NSObject {
         let result = (file as NSString).appendingPathComponent("account.plist")
         return result
     }
+    
     /// int 转 NSDate
     func int2NSDate(time:Int) -> NSDate {
         let timeInterval = TimeInterval(exactly: time)
         let result = NSDate(timeIntervalSinceNow: timeInterval!);
         return result
+    }
+    
+    /// 屏幕尺寸
+    @objc func getScreenBounds() -> CGRect{
+        return UIScreen.main.bounds
     }
 }

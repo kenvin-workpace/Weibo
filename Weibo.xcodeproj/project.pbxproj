@@ -7,16 +7,18 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A575D2622080D6D00C5D1A7 /* TokenInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D2522080D6D00C5D1A7 /* TokenInfo.swift */; };
+		0A575D2622080D6D00C5D1A7 /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D2522080D6D00C5D1A7 /* AccountInfo.swift */; };
 		0A575D2A220828E500C5D1A7 /* WeiboNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D29220828E500C5D1A7 /* WeiboNet.swift */; };
-		0A575D2D22083C7B00C5D1A7 /* TokenInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D2C22083C7B00C5D1A7 /* TokenInfoModel.swift */; };
+		0A575D2D22083C7B00C5D1A7 /* AccountInfoModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D2C22083C7B00C5D1A7 /* AccountInfoModel.swift */; };
 		0A575D5522086EDF00C5D1A7 /* WeiboUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D5422086EDF00C5D1A7 /* WeiboUtil.swift */; };
+		0A575D582209943800C5D1A7 /* CollectionViewControllerFeature.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D572209943800C5D1A7 /* CollectionViewControllerFeature.swift */; };
+		0A575D5A220A8B8200C5D1A7 /* ViewControllerWelcome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D59220A8B8200C5D1A7 /* ViewControllerWelcome.swift */; };
+		0A575D5C220A8BB000C5D1A7 /* CommonUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D5B220A8BB000C5D1A7 /* CommonUtil.swift */; };
 		0A6149F82206C546001FE21F /* UILabel+Extendsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6149F72206C546001FE21F /* UILabel+Extendsion.swift */; };
 		0A6149FA2207024E001FE21F /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6149F92207024E001FE21F /* HttpUtil.swift */; };
 		0A8324D822055D5D009D2E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324D722055D5D009D2E94 /* AppDelegate.swift */; };
 		0A8324E022055D5D009D2E94 /* Weibo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324DE22055D5D009D2E94 /* Weibo.xcdatamodeld */; };
 		0A8324E222055D5E009D2E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8324E122055D5E009D2E94 /* Assets.xcassets */; };
-		0A8324E522055D5E009D2E94 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0A8324E322055D5E009D2E94 /* LaunchScreen.storyboard */; };
 		0A8324F72205603B009D2E94 /* TableViewControllerMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324F62205603B009D2E94 /* TableViewControllerMine.swift */; };
 		0A8324F922056045009D2E94 /* TableViewControllerHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324F822056045009D2E94 /* TableViewControllerHome.swift */; };
 		0A8324FB22056051009D2E94 /* TableViewControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324FA22056051009D2E94 /* TableViewControllerProfile.swift */; };
@@ -32,17 +34,19 @@
 
 /* Begin PBXFileReference section */
 		03A5D3895BB4C66C20F8FCB5 /* Pods_Weibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		0A575D2522080D6D00C5D1A7 /* TokenInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfo.swift; sourceTree = "<group>"; };
+		0A575D2522080D6D00C5D1A7 /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
 		0A575D29220828E500C5D1A7 /* WeiboNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboNet.swift; sourceTree = "<group>"; };
-		0A575D2C22083C7B00C5D1A7 /* TokenInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenInfoModel.swift; sourceTree = "<group>"; };
+		0A575D2C22083C7B00C5D1A7 /* AccountInfoModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoModel.swift; sourceTree = "<group>"; };
 		0A575D5422086EDF00C5D1A7 /* WeiboUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboUtil.swift; sourceTree = "<group>"; };
+		0A575D572209943800C5D1A7 /* CollectionViewControllerFeature.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewControllerFeature.swift; sourceTree = "<group>"; };
+		0A575D59220A8B8200C5D1A7 /* ViewControllerWelcome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerWelcome.swift; sourceTree = "<group>"; };
+		0A575D5B220A8BB000C5D1A7 /* CommonUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonUtil.swift; sourceTree = "<group>"; };
 		0A6149F72206C546001FE21F /* UILabel+Extendsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extendsion.swift"; sourceTree = "<group>"; };
 		0A6149F92207024E001FE21F /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		0A8324D422055D5D009D2E94 /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8324D722055D5D009D2E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8324DF22055D5D009D2E94 /* Weibo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weibo.xcdatamodel; sourceTree = "<group>"; };
 		0A8324E122055D5E009D2E94 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		0A8324E422055D5E009D2E94 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0A8324E622055D5E009D2E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A8324F62205603B009D2E94 /* TableViewControllerMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerMine.swift; sourceTree = "<group>"; };
 		0A8324F822056045009D2E94 /* TableViewControllerHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerHome.swift; sourceTree = "<group>"; };
@@ -81,7 +85,7 @@
 		0A575D27220828C500C5D1A7 /* bean */ = {
 			isa = PBXGroup;
 			children = (
-				0A575D2522080D6D00C5D1A7 /* TokenInfo.swift */,
+				0A575D2522080D6D00C5D1A7 /* AccountInfo.swift */,
 			);
 			name = bean;
 			sourceTree = "<group>";
@@ -97,9 +101,21 @@
 		0A575D2B22083C5D00C5D1A7 /* model */ = {
 			isa = PBXGroup;
 			children = (
-				0A575D2C22083C7B00C5D1A7 /* TokenInfoModel.swift */,
+				0A575D2C22083C7B00C5D1A7 /* AccountInfoModel.swift */,
 			);
 			name = model;
+			sourceTree = "<group>";
+		};
+		0A575D56220993E100C5D1A7 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A8325022205A18E009D2E94 /* ViewControllerMain.swift */,
+				0A8325092205A54E009D2E94 /* ViewControllerVisitor.swift */,
+				0AC8492822071DA6000E7537 /* ViewControllerOAuth.swift */,
+				0A575D572209943800C5D1A7 /* CollectionViewControllerFeature.swift */,
+				0A575D59220A8B8200C5D1A7 /* ViewControllerWelcome.swift */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 		0A8324CB22055D5D009D2E94 = {
@@ -165,7 +181,6 @@
 			isa = PBXGroup;
 			children = (
 				0A8324E122055D5E009D2E94 /* Assets.xcassets */,
-				0A8324E322055D5E009D2E94 /* LaunchScreen.storyboard */,
 			);
 			name = res;
 			sourceTree = "<group>";
@@ -174,9 +189,7 @@
 			isa = PBXGroup;
 			children = (
 				0A83250B2205A683009D2E94 /* view */,
-				0A8325022205A18E009D2E94 /* ViewControllerMain.swift */,
-				0A8325092205A54E009D2E94 /* ViewControllerVisitor.swift */,
-				0AC8492822071DA6000E7537 /* ViewControllerOAuth.swift */,
+				0A575D56220993E100C5D1A7 /* controller */,
 			);
 			name = main;
 			sourceTree = "<group>";
@@ -248,6 +261,7 @@
 			children = (
 				0A6149F92207024E001FE21F /* HttpUtil.swift */,
 				0A575D5422086EDF00C5D1A7 /* WeiboUtil.swift */,
+				0A575D5B220A8BB000C5D1A7 /* CommonUtil.swift */,
 			);
 			name = utils;
 			sourceTree = "<group>";
@@ -330,7 +344,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0A8324E522055D5E009D2E94 /* LaunchScreen.storyboard in Resources */,
 				0A8324E222055D5E009D2E94 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -379,11 +392,15 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Weibo/Pods-Weibo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
+				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/SVProgressHUD/SVProgressHUD.framework",
 				"${BUILT_PRODUCTS_DIR}/SnapKit/SnapKit.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/AFNetworking.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SVProgressHUD.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SnapKit.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -401,36 +418,28 @@
 				0A8324F922056045009D2E94 /* TableViewControllerHome.swift in Sources */,
 				0A6149F82206C546001FE21F /* UILabel+Extendsion.swift in Sources */,
 				0A8324F72205603B009D2E94 /* TableViewControllerMine.swift in Sources */,
+				0A575D582209943800C5D1A7 /* CollectionViewControllerFeature.swift in Sources */,
 				0A8324FD2205605B009D2E94 /* TableViewControllerDiscover.swift in Sources */,
 				0A8325032205A18E009D2E94 /* ViewControllerMain.swift in Sources */,
 				0A8324D822055D5D009D2E94 /* AppDelegate.swift in Sources */,
 				0A575D2A220828E500C5D1A7 /* WeiboNet.swift in Sources */,
 				0A8325072205A25F009D2E94 /* UIButton+Extendsion.swift in Sources */,
 				0A6149FA2207024E001FE21F /* HttpUtil.swift in Sources */,
-				0A575D2622080D6D00C5D1A7 /* TokenInfo.swift in Sources */,
+				0A575D2622080D6D00C5D1A7 /* AccountInfo.swift in Sources */,
 				0AC8492922071DA6000E7537 /* ViewControllerOAuth.swift in Sources */,
 				0A8324FB22056051009D2E94 /* TableViewControllerProfile.swift in Sources */,
 				0A8324FF22056063009D2E94 /* TableViewControllerMessage.swift in Sources */,
-				0A575D2D22083C7B00C5D1A7 /* TokenInfoModel.swift in Sources */,
+				0A575D2D22083C7B00C5D1A7 /* AccountInfoModel.swift in Sources */,
 				0A8324E022055D5D009D2E94 /* Weibo.xcdatamodeld in Sources */,
 				0A83250A2205A54E009D2E94 /* ViewControllerVisitor.swift in Sources */,
+				0A575D5A220A8B8200C5D1A7 /* ViewControllerWelcome.swift in Sources */,
 				0A575D5522086EDF00C5D1A7 /* WeiboUtil.swift in Sources */,
 				0A83250D2205A698009D2E94 /* UIViewVisitor.swift in Sources */,
+				0A575D5C220A8BB000C5D1A7 /* CommonUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXVariantGroup section */
-		0A8324E322055D5E009D2E94 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				0A8324E422055D5E009D2E94 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
 		0A8324E722055D5E009D2E94 /* Debug */ = {
@@ -554,6 +563,7 @@
 			baseConfigurationReference = A3DB1089A898799B77F49CAF /* Pods-Weibo.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AUXU88Z53R;
 				INFOPLIST_FILE = Weibo/Info.plist;
@@ -574,6 +584,7 @@
 			baseConfigurationReference = C06B8C86A665526587A2779B /* Pods-Weibo.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = AUXU88Z53R;
 				INFOPLIST_FILE = Weibo/Info.plist;

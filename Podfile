@@ -11,5 +11,7 @@ target 'Weibo' do
   
   pod 'AFNetworking', '~> 3.0'
   pod 'SnapKit', '~> 4.0.0'
+  pod 'SDWebImage', '~> 4.3.3'
+  pod 'SVProgressHUD', '~> 2.2.5'
 
 end
