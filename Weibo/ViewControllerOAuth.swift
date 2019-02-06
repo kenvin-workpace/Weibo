@@ -52,14 +52,12 @@ extension ViewControllerOAuth : WKNavigationDelegate{
         let url = webView.url
         
         //有微博域名，且重定向URL有百度
-        if url?.host?.hasSuffix(weibo) ?? false,url?.query?.hasSuffix(baidu) ?? false {
+        if url?.host?.hasSuffix(weibo) ?? false {
             decisionHandler(WKNavigationResponsePolicy.allow)
             return
         }
         //授权成功
         if url?.host?.hasSuffix(baidu) ?? false,url?.query?.hasPrefix(success) ?? false{
-            decisionHandler(WKNavigationResponsePolicy.cancel)
-            
             let code = getCode(url: url!)
             //获取accessToken
             AccountInfoModel.shareInstance.getAccessToken(code: code) { (iSuccess) in
@@ -72,8 +70,8 @@ extension ViewControllerOAuth : WKNavigationDelegate{
                     NotificationCenter.default.post(name: CUSTOM_SWITCH_NOTIFICATIONCENTER, object: "welcome")
                 })
             }
-            
             SVProgressHUD.dismiss()
+            decisionHandler(WKNavigationResponsePolicy.cancel)
             return
         }
         //授权失败
@@ -83,9 +81,11 @@ extension ViewControllerOAuth : WKNavigationDelegate{
             return
         }
         //取消授权
-        if url?.host?.hasSuffix(weibo) == true,url?.query?.hasPrefix(failure) ?? true{
-            SVProgressHUD.showError(withStatus: "\n取消授权，请重试")
+        if url?.host?.hasSuffix(baidu) == true,url?.query?.hasPrefix(failure) ?? true{
             decisionHandler(WKNavigationResponsePolicy.cancel)
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(1*NSEC_PER_SEC))) {
+                self.clickClose()
+            }
             return
         }
     }

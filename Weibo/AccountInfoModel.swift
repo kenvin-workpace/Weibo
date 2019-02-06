@@ -101,7 +101,7 @@ extension AccountInfoModel{
             //存档
             tokenInfo.saveAccount()
             //成功标志
-            complete(false)
+            complete(true)
         }
     }
 }
