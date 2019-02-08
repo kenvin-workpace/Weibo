@@ -30,6 +30,7 @@ extension HomeLineViewModel{
             //遍历
             for dict in dicts{
                 dictArr.append(HomeLineModel(homeline: HomeLine(dict: dict)))
+                //print(HomeLine(dict: dict))
             }
             //print(dictArr)
             self.homeLineModel = dictArr+self.homeLineModel

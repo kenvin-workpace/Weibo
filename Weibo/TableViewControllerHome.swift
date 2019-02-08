@@ -35,6 +35,9 @@ extension TableViewControllerHome{
         return cell
     }
     
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return homeLineViewMode.homeLineModel[indexPath.row].rowHeight
+    }
  
 }
 
@@ -65,8 +68,6 @@ extension TableViewControllerHome{
         //去除分割线
         tableView.separatorStyle = .none
         //预估行高
-        tableView.estimatedRowHeight = 200
-        //自动计算行高
-        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 400
     }
 }

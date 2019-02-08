@@ -55,7 +55,7 @@ extension ViewControllerWelcome{
         // 头像文本隐藏
         headText.alpha = 0
         // 重设头像位置
-        headPic.snp.remakeConstraints { (pic) in
+        headPic.snp.updateConstraints { (pic) in
             pic.width.equalTo(90)
             pic.height.equalTo(90)
             pic.centerX.equalTo(view.snp.centerX)

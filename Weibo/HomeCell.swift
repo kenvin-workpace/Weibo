@@ -8,8 +8,8 @@
 
 import UIKit
 
-let HOME_MARGIN = 10
-let HOME_PIC_SIZE = 44
+let HOME_MARGIN : CGFloat = 10
+let HOME_PIC_SIZE : CGFloat = 44
 
 class HomeCell: UITableViewCell {
     
@@ -18,7 +18,7 @@ class HomeCell: UITableViewCell {
     /// 内容视图
     private lazy var contentLabel = UILabel(title: "微博正文",screenInset:CGFloat(HOME_MARGIN))
     /// 图片视图
-    
+    private lazy var picsView = HomeCellPicsView()
     /// 底部视图
     private lazy var bottomView = HomeCellBottomView()
     
@@ -29,8 +29,22 @@ class HomeCell: UITableViewCell {
             // 内容视图
             contentLabel.text = homeModel?.homeline.text
             // 图片视图
-            
+            picsView.homeModel = homeModel
+            picsView.snp.updateConstraints { (make) in
+                make.width.equalTo(picsView.bounds.width)
+                make.height.equalTo(picsView.bounds.height)
+            }
         }
+    }
+    
+    /// 根据指定视图计算行高
+    func rowHeigth(model:HomeLineModel) -> CGFloat {
+        // 记录视图模型 -> 会调用上面的didSet 设置内容以及更新约束
+        homeModel = model
+        // 强制更新约束
+        contentView.layoutIfNeeded()
+        // 返回底部视图的最大高度
+        return bottomView.frame.maxY
     }
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -54,7 +68,7 @@ extension HomeCell{
         // 内容视图
         contentView.addSubview(contentLabel)
         /// 图片视图
-        
+        contentView.addSubview(picsView)
         // 底部视图
         contentView.addSubview(bottomView)
     }
@@ -74,15 +88,20 @@ extension HomeCell{
             make.left.equalTo(contentView.snp.left).offset(HOME_MARGIN)
         }
         /// 图片视图
-        
+        picsView.snp.makeConstraints { (make) in
+            make.top.equalTo(contentLabel.snp.bottom).offset(HOME_MARGIN)
+            make.left.equalTo(contentLabel.snp.left)
+            make.width.equalTo(300)
+            make.height.equalTo(90)
+        }
         // 底部视图
         bottomView.snp.makeConstraints { (make) in
-            make.top.equalTo(contentLabel.snp.bottom).offset(HOME_MARGIN)
+            make.top.equalTo(picsView.snp.bottom).offset(HOME_MARGIN)
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
             make.height.equalTo(44)
             //指定向下约束
-            make.bottom.equalTo(contentView.snp.bottom)
+            //make.bottom.equalTo(contentView.snp.bottom)
         }
     }
 }

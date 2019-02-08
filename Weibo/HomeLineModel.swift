@@ -8,17 +8,38 @@
 
 import UIKit
 
-class HomeLineModel{
+class HomeLineModel : CustomStringConvertible{
     
     var homeline:HomeLine
     
     /// 缩略图URL
+    var thumbnailUrls:[URL]?
     
+    /// 缓存行高
+    lazy var rowHeight : CGFloat = {
+        let cell = HomeCell(style: .default, reuseIdentifier: TableViewControllerHomeCell)
+        return cell.rowHeigth(model: self)
+    }()
     
     init(homeline:HomeLine) {
         self.homeline = homeline
         
+        if homeline.pic_urls?.count ?? 0 > 0 {
+            thumbnailUrls = [URL]()
+            for dict in homeline.pic_urls ?? []{
+                let url = NSURL(string: dict["thumbnail_pic"]!)! as URL
+                thumbnailUrls?.append(url)
+            }
+        }
     }
+    
+    var description: String{
+        return homeline.description + String(describing: thumbnailUrls)
+    }
+}
+
+private func switchPics2Url(){
+    
 }
 
 extension HomeLineModel{

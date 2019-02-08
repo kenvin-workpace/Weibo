@@ -21,6 +21,7 @@
 		0A575D67220B3D9E00C5D1A7 /* HomeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D66220B3D9E00C5D1A7 /* HomeCell.swift */; };
 		0A575D69220B3E4F00C5D1A7 /* HomeCellTopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D68220B3E4F00C5D1A7 /* HomeCellTopView.swift */; };
 		0A575D6B220B3E5900C5D1A7 /* HomeCellBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D6A220B3E5900C5D1A7 /* HomeCellBottomView.swift */; };
+		0A575D6F220D322B00C5D1A7 /* HomeCellPicsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D6E220D322B00C5D1A7 /* HomeCellPicsView.swift */; };
 		0A6149F82206C546001FE21F /* UILabel+Extendsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6149F72206C546001FE21F /* UILabel+Extendsion.swift */; };
 		0A6149FA2207024E001FE21F /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6149F92207024E001FE21F /* HttpUtil.swift */; };
 		0A8324D822055D5D009D2E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324D722055D5D009D2E94 /* AppDelegate.swift */; };
@@ -55,6 +56,7 @@
 		0A575D66220B3D9E00C5D1A7 /* HomeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCell.swift; sourceTree = "<group>"; };
 		0A575D68220B3E4F00C5D1A7 /* HomeCellTopView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellTopView.swift; sourceTree = "<group>"; };
 		0A575D6A220B3E5900C5D1A7 /* HomeCellBottomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellBottomView.swift; sourceTree = "<group>"; };
+		0A575D6E220D322B00C5D1A7 /* HomeCellPicsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellPicsView.swift; sourceTree = "<group>"; };
 		0A6149F72206C546001FE21F /* UILabel+Extendsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extendsion.swift"; sourceTree = "<group>"; };
 		0A6149F92207024E001FE21F /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
 		0A8324D422055D5D009D2E94 /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -130,8 +132,8 @@
 				0A8325022205A18E009D2E94 /* ViewControllerMain.swift */,
 				0A8325092205A54E009D2E94 /* ViewControllerVisitor.swift */,
 				0AC8492822071DA6000E7537 /* ViewControllerOAuth.swift */,
-				0A575D572209943800C5D1A7 /* CollectionViewControllerFeature.swift */,
 				0A575D59220A8B8200C5D1A7 /* ViewControllerWelcome.swift */,
+				0A575D572209943800C5D1A7 /* CollectionViewControllerFeature.swift */,
 			);
 			name = controller;
 			sourceTree = "<group>";
@@ -141,6 +143,7 @@
 			children = (
 				0A575D66220B3D9E00C5D1A7 /* HomeCell.swift */,
 				0A575D68220B3E4F00C5D1A7 /* HomeCellTopView.swift */,
+				0A575D6E220D322B00C5D1A7 /* HomeCellPicsView.swift */,
 				0A575D6A220B3E5900C5D1A7 /* HomeCellBottomView.swift */,
 			);
 			name = cell;
@@ -472,6 +475,7 @@
 				0A83250D2205A698009D2E94 /* UIViewVisitor.swift in Sources */,
 				0A575D5C220A8BB000C5D1A7 /* CommonUtil.swift in Sources */,
 				0A575D62220B372400C5D1A7 /* HomeLineViewModel.swift in Sources */,
+				0A575D6F220D322B00C5D1A7 /* HomeCellPicsView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -29,7 +29,7 @@ extension HttpUtil{
     func request(method : HttpMethod, url : String, params : [String : Any]?, complete :@escaping (_ result : Any?, _ error : Error?)->()){
         
         DispatchQueue.global().async {
-            print("请求线程,\(Thread.current),请求参数:\(String(describing: params))")
+            //print("请求线程,\(Thread.current),请求参数:\(String(describing: params))")
             
             //成功回调
             let successBlock  = {(task:URLSessionDataTask, result : Any) in
