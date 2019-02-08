@@ -49,7 +49,7 @@ extension AppDelegate{
     /// 判断使用哪个VC
     var selectViewController:UIViewController{
         // 账号是否登录
-        if AccountInfoModel.shareInstance.isLoginStatus {
+        if AccountInfoViewModel.shareInstance.isLoginStatus {
             return isNewVersion ? CollectionViewControllerFeature() : ViewControllerWelcome()
         }
         return ViewControllerMain()

@@ -18,25 +18,46 @@ class WeiboNet {
     private let appSecret = "e7152dcd22205fa131ff807096f82d00"
     
     //单例
-    static let build = WeiboNet()
+    static let shareInstance = WeiboNet()
+    
+    private init() {
+        
+    }
+    
+    // 获取access token
+    func getAccessToken() -> String {
+        return AccountInfoViewModel.shareInstance.account?.access_token ?? ""
+    }
 }
 
 // MARK: 用户方法
 extension WeiboNet{
+    
+    /// 获取 home timeline
+    func homeTimeLine(callback:@escaping (_ result:Any?)->()) -> Void {
+        let url = "https://api.weibo.com/2/statuses/home_timeline.json"
+        let param = ["access_token":getAccessToken()]
+        
+        HttpUtil.shareInstance.request(method: .GET, url: url, params: param) { (result, error) in
+            if error != nil {
+                print("WeiboNet,method:homeTimeLine,error=\(String(describing: error))")
+                return
+            }
+            callback(result)
+        }
+    }
     
     /// 获取 user show
     func loadUseShow(token:String,uid:String,callback:@escaping (_ result:Any?,_ error:Error?)->()) -> Void {
         let url = "https://api.weibo.com/2/users/show.json"
         let param = ["access_token":token,"uid":uid]
         
-        HttpUtil.build.request(method: HttpMethod.GET, url: url, params: param, complete: { (result, error) in
+        HttpUtil.shareInstance.request(method: HttpMethod.GET, url: url, params: param, complete: { (result, error) in
             if error != nil{
                 print("WeiboNet,method:loadUseShow,error=\(String(describing: error))")
                 return
             }
-            DispatchQueue.main.async {
-                callback(result,error)
-            }
+            callback(result,error)
         })
     }
 }
@@ -56,14 +77,12 @@ extension WeiboNet{
         
         let param = ["client_id":self.appKey,"client_secret":self.appSecret,"grant_type":"authorization_code","code":code,"redirect_uri":self.redirectUri]
         
-        HttpUtil.build.request(method: HttpMethod.POST, url: url, params: param, complete: { (result, error) in
+        HttpUtil.shareInstance.request(method: HttpMethod.POST, url: url, params: param, complete: { (result, error) in
             if error != nil{
                 print("WeiboNet,method:loadAccessToken,error=\(String(describing: error))")
                 return
             }
-            DispatchQueue.main.async {
-                callback(result,error)
-            }
+            callback(result,error)
         })
     }
 }

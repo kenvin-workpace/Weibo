@@ -8,10 +8,10 @@
 
 import Foundation
 
-class AccountInfoModel {
+class AccountInfoViewModel {
     
     //单例
-    static let shareInstance = AccountInfoModel()
+    static let shareInstance = AccountInfoViewModel()
     
     //用户模型
     var account:AccountInfo?
@@ -27,7 +27,7 @@ class AccountInfoModel {
     
 }
 
-extension AccountInfoModel{
+extension AccountInfoViewModel{
     
     ///判断用户是否登录
     var isLoginStatus : Bool{
@@ -66,11 +66,11 @@ extension AccountInfoModel{
     }
 }
 
-extension AccountInfoModel{
+extension AccountInfoViewModel{
     
     /// 获取accessToken
     func getAccessToken(code:String,callback:@escaping (_ isSuccess:Bool)->()) -> Void {
-        WeiboNet.build.loadAccessToken(code: code) { (result, error) in
+        WeiboNet.shareInstance.loadAccessToken(code: code) { (result, error) in
             if error != nil{
                 print("ViewControllerOAuth,method:getAccessToken,error:\(String(describing: error))")
                 callback(false)
@@ -85,7 +85,7 @@ extension AccountInfoModel{
     
     /// 获取 user show
     func loadUserShow(tokenInfo:AccountInfo,complete:@escaping (_ isSuccess:Bool)->()) -> Void {
-        WeiboNet.build.loadUseShow(token: tokenInfo.access_token!, uid: tokenInfo.uid!) { (result, error) in
+        WeiboNet.shareInstance.loadUseShow(token: tokenInfo.access_token!, uid: tokenInfo.uid!) { (result, error) in
             if error != nil{
                 print("ViewControllerOAuth,method:loadUserShow,error:\(String(describing: error))")
                 complete(false)

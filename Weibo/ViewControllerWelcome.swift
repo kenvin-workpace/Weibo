@@ -46,7 +46,7 @@ extension ViewControllerWelcome{
     
     /// 加载用户头像
     private func load_head_pic(){
-        headPic.sd_setImage(with: AccountInfoModel.shareInstance.headPic, placeholderImage: UIImage(named: "avatar_default_big"), options: []) { (image, error, imageCacheType, url) in
+        headPic.sd_setImage(with: AccountInfoViewModel.shareInstance.headPic, placeholderImage: UIImage(named: "avatar_default_big"), options: []) { (image, error, imageCacheType, url) in
             
         }
     }

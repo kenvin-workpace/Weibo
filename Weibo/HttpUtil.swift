@@ -16,7 +16,7 @@ enum HttpMethod : String{
 
 class HttpUtil: AFHTTPSessionManager {
     //单例
-    static let build:HttpUtil = {
+    static let shareInstance:HttpUtil = {
         let instance = HttpUtil()
         instance.responseSerializer.acceptableContentTypes?.insert("text/plain")
         return instance
@@ -35,7 +35,7 @@ extension HttpUtil{
             let successBlock  = {(task:URLSessionDataTask, result : Any) in
                 DispatchQueue.main.async {
                     complete(result, nil)
-                    print("返回线程,\(Thread.current),返回结果:\(result)")
+                    //print("返回线程,\(Thread.current),返回结果:\(result)")
                 }
             }
             
@@ -43,7 +43,7 @@ extension HttpUtil{
             let failureBlock  = {(task:URLSessionDataTask?, error :Error) in
                 DispatchQueue.main.async {
                     complete(nil, error)
-                    print("返回线程,\(Thread.current),失败结果:\(error)")
+                    //print("返回线程,\(Thread.current),失败结果:\(error)")
                 }
             }
             

@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 protocol UIViewVisitorDelegate : NSObjectProtocol {
     func clickRegBtn()

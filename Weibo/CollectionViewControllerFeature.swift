@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import SnapKit
 
 private let reuseIdentifier = "CollectionViewControllerFeature_Cell"
 private let CollectionViewImgCount = 4

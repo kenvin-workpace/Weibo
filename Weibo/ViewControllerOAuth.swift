@@ -36,7 +36,7 @@ class ViewControllerOAuth: UIViewController {
 extension ViewControllerOAuth : WKNavigationDelegate{
     
     func init_view_loading(){
-        webView.load(URLRequest(url: WeiboNet.build.oAuthUrl))
+        webView.load(URLRequest(url: WeiboNet.shareInstance.oAuthUrl))
     }
     
     func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
@@ -60,7 +60,7 @@ extension ViewControllerOAuth : WKNavigationDelegate{
         if url?.host?.hasSuffix(baidu) ?? false,url?.query?.hasPrefix(success) ?? false{
             let code = getCode(url: url!)
             //获取accessToken
-            AccountInfoModel.shareInstance.getAccessToken(code: code) { (iSuccess) in
+            AccountInfoViewModel.shareInstance.getAccessToken(code: code) { (iSuccess) in
                 if !iSuccess{
                     SVProgressHUD.dismiss()
                     print("OAUTH 获取失败")
@@ -82,6 +82,7 @@ extension ViewControllerOAuth : WKNavigationDelegate{
         }
         //取消授权
         if url?.host?.hasSuffix(baidu) == true,url?.query?.hasPrefix(failure) ?? true{
+            SVProgressHUD.dismiss()
             decisionHandler(WKNavigationResponsePolicy.cancel)
             DispatchQueue.main.asyncAfter(deadline: DispatchTime(uptimeNanoseconds: UInt64(1*NSEC_PER_SEC))) {
                 self.clickClose()
