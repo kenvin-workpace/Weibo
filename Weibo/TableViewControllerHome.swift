@@ -8,7 +8,8 @@
 
 import UIKit
 
-let TableViewControllerHomeCell = "TableViewControllerHome_cell"
+let Home_Cell_Normal_ID = "Home_Cell_Normal_ID"
+let Home_Cell_Retweet_ID = "Home_Cell_Retweet_ID"
 
 class TableViewControllerHome: ViewControllerVisitor {
     
@@ -30,8 +31,9 @@ extension TableViewControllerHome{
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: TableViewControllerHomeCell, for: indexPath) as! HomeCell
-        cell.homeModel = homeLineViewMode.homeLineModel[indexPath.row]
+        let homeModel = homeLineViewMode.homeLineModel[indexPath.row]
+        let cell = tableView.dequeueReusableCell(withIdentifier: homeModel.selectCellID, for: indexPath) as! HomeCell
+        cell.homeModel = homeModel
         return cell
     }
     
@@ -64,7 +66,8 @@ extension TableViewControllerHome{
             return
         }
         //注册可重用cell
-        tableView.register(HomeCell.self, forCellReuseIdentifier: TableViewControllerHomeCell)
+        tableView.register(HomeCellNormal.self, forCellReuseIdentifier: Home_Cell_Normal_ID)
+        tableView.register(HomeCellRetweet.self, forCellReuseIdentifier: Home_Cell_Retweet_ID)
         //去除分割线
         tableView.separatorStyle = .none
         //预估行高

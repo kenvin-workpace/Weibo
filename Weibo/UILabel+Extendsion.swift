@@ -21,7 +21,7 @@ extension UILabel {
         if screenInset == 0{
             textAlignment = .center
         }else{
-            preferredMaxLayoutWidth = WeiboUtil.shareInstance.getScreenBounds().width-screenInset
+            preferredMaxLayoutWidth = UIScreen.main.bounds.width - screenInset
             textAlignment = .left
         }
     }

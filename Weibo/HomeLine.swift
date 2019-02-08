@@ -22,6 +22,8 @@ class HomeLine: NSObject {
     @objc var pic_urls:[[String:String]]?
     /// 用户信息
     @objc var user:User?
+    /// 转发微博信息
+    @objc var retweeted_status:HomeLine?
     
     init(dict:[String:Any]) {
         super.init()
@@ -36,6 +38,12 @@ class HomeLine: NSObject {
             }
             return
         }
+        if key == "retweeted_status"{
+            if let dict = value as? [String:Any]{
+                retweeted_status = HomeLine(dict: dict)
+            }
+            return
+        }
         super.setValue(value, forKey: key)
     }
     
@@ -44,6 +52,6 @@ class HomeLine: NSObject {
     }
     
     override var description: String{
-        return dictionaryWithValues(forKeys: ["id","text","created_at","source","user","pic_urls"]).description
+        return dictionaryWithValues(forKeys: ["id","text","created_at","source","user","pic_urls","retweeted_status"]).description
     }
 }

@@ -16,11 +16,11 @@ class HomeCell: UITableViewCell {
     /// 顶部视图
     private lazy var topView = HomeCellTopView()
     /// 内容视图
-    private lazy var contentLabel = UILabel(title: "微博正文",screenInset:CGFloat(HOME_MARGIN))
+    lazy var contentLabel = UILabel(title: "微博正文",screenInset:CGFloat(HOME_MARGIN))
     /// 图片视图
-    private lazy var picsView = HomeCellPicsView()
+    lazy var picsView = HomeCellPicsView()
     /// 底部视图
-    private lazy var bottomView = HomeCellBottomView()
+    lazy var bottomView = HomeCellBottomView()
     
     var homeModel:HomeLineModel?{
         didSet{
@@ -50,8 +50,7 @@ class HomeCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         
-        init_view()
-        init_view_layout()
+        init_all()
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -61,8 +60,18 @@ class HomeCell: UITableViewCell {
 
 extension HomeCell{
     
+    @objc func init_all(){
+        init_set()
+        init_view()
+        init_view_layout()
+    }
+    
+    private func init_set(){
+        selectionStyle = .none
+    }
+    
     /// 添加控件
-    func init_view() {
+    private func init_view() {
         // 顶部视图
         contentView.addSubview(topView)
         // 内容视图
@@ -74,7 +83,7 @@ extension HomeCell{
     }
     
     /// 为view设置自动布局
-    func init_view_layout(){
+    private func init_view_layout(){
         // 顶部视图
         topView.snp.makeConstraints { (make) in
             make.top.equalTo(contentView.snp.top)
@@ -85,14 +94,8 @@ extension HomeCell{
         // 内容视图
         contentLabel.snp.makeConstraints { (make) in
             make.top.equalTo(topView.snp.bottom).offset(2*HOME_MARGIN)
-            make.left.equalTo(contentView.snp.left).offset(HOME_MARGIN)
-        }
-        /// 图片视图
-        picsView.snp.makeConstraints { (make) in
-            make.top.equalTo(contentLabel.snp.bottom).offset(HOME_MARGIN)
-            make.left.equalTo(contentLabel.snp.left)
-            make.width.equalTo(300)
-            make.height.equalTo(90)
+            make.left.equalTo(topView.snp.left).offset(HOME_MARGIN)
+            make.right.equalTo(contentView.snp.right).offset(-HOME_MARGIN)
         }
         // 底部视图
         bottomView.snp.makeConstraints { (make) in
@@ -100,8 +103,6 @@ extension HomeCell{
             make.left.equalTo(contentView.snp.left)
             make.right.equalTo(contentView.snp.right)
             make.height.equalTo(44)
-            //指定向下约束
-            //make.bottom.equalTo(contentView.snp.bottom)
         }
     }
 }

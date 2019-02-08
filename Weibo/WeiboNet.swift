@@ -10,12 +10,19 @@ import Foundation
 
 class WeiboNet {
     
-    // app key
-    private let appKey = "2266202231"
+    // app key 潮流微博
+    //private let appKey = "2266202231"
+    
+    // app key 备用微博
+    private let appKey = "46721359"
+    
     // redirect uri
     private let redirectUri = "http://www.baidu.com"
-    // app secret
-    private let appSecret = "e7152dcd22205fa131ff807096f82d00"
+    
+    // app secret 备用微博
+    //private let appSecret = "e7152dcd22205fa131ff807096f82d00"
+    
+    private let appSecret = "dbb954309eee35e8098de7c3e1d0f8ae"
     
     //单例
     static let shareInstance = WeiboNet()
@@ -34,6 +41,7 @@ class WeiboNet {
 extension WeiboNet{
     
     /// 获取 home timeline
+    /// [https://open.weibo.com/wiki/2/statuses/home_timeline](https://open.weibo.com/wiki/2/statuses/home_timeline)
     func homeTimeLine(callback:@escaping (_ result:Any?)->()) -> Void {
         let url = "https://api.weibo.com/2/statuses/home_timeline.json"
         let param = ["access_token":getAccessToken()]

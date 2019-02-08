@@ -77,14 +77,19 @@ private class HomeCellPicsViewCell : UICollectionViewCell{
         fatalError("init(coder:) has not been implemented")
     }
     
-    private lazy var iconView = UIImageView()
+    private lazy var iconView : UIImageView = {
+        let img = UIImageView()
+        img.contentMode = UIView.ContentMode.scaleAspectFill
+        img.clipsToBounds = true
+        return img
+    }()
 }
 
 extension HomeCellPicsView{
     
     private func init_setting(){
         // 背景颜色
-        backgroundColor = UIColor.white
+        backgroundColor = UIColor.clear
         // 设置数据源
         dataSource = self
         // 注册可重用cell

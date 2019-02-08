@@ -17,16 +17,34 @@ class HomeLineModel : CustomStringConvertible{
     
     /// 缓存行高
     lazy var rowHeight : CGFloat = {
-        let cell = HomeCell(style: .default, reuseIdentifier: TableViewControllerHomeCell)
+        var cell : HomeCell
+        if homeline.retweeted_status == nil{
+            cell = HomeCellNormal(style: .default, reuseIdentifier: Home_Cell_Normal_ID)
+        }else{
+            cell = HomeCellRetweet(style: .default, reuseIdentifier: Home_Cell_Retweet_ID)
+        }
         return cell.rowHeigth(model: self)
     }()
+    
+    // 转发文本
+    var retweetText : String?{
+        guard let text = homeline.retweeted_status else{
+            return nil
+        }
+        return String(describing: "@"+(text.user?.screen_name ?? "") + ":" + (text.text ?? ""))
+    }
+    
+    // 选择cell id
+    var selectCellID : String{
+        return homeline.retweeted_status != nil ? Home_Cell_Retweet_ID : Home_Cell_Normal_ID
+    }
     
     init(homeline:HomeLine) {
         self.homeline = homeline
         
-        if homeline.pic_urls?.count ?? 0 > 0 {
+        if let urls = homeline.retweeted_status?.pic_urls ?? homeline.pic_urls {
             thumbnailUrls = [URL]()
-            for dict in homeline.pic_urls ?? []{
+            for dict in urls{
                 let url = NSURL(string: dict["thumbnail_pic"]!)! as URL
                 thumbnailUrls?.append(url)
             }
@@ -36,10 +54,6 @@ class HomeLineModel : CustomStringConvertible{
     var description: String{
         return homeline.description + String(describing: thumbnailUrls)
     }
-}
-
-private func switchPics2Url(){
-    
 }
 
 extension HomeLineModel{
