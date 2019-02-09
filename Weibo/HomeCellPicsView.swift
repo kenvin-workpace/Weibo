@@ -113,7 +113,20 @@ extension HomeCellPicsView{
         }
         // 一张图片
         if count == 1 {
-            let size = CGSize(width: 150, height: 120)
+            var size = CGSize(width: 150, height: 120)
+            //获取缓存的单张图片
+            let key = homeModel?.thumbnailUrls?.first?.absoluteString
+            if let imgView = SDWebImageManager.shared().imageCache?.imageFromDiskCache(forKey: key){
+                size = imgView.size
+            }
+            // 过窄处理
+            size.width = size.width < 40 ? 40 : size.width
+            // 过宽处理
+            if size.width > 300{
+                let w:CGFloat = 300
+                let h = size.height * w / size.width
+                size = CGSize(width: w, height: h)
+            }
             // 内部图片的大小
             layout.itemSize = size
             // 配图视图的大小

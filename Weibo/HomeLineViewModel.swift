@@ -7,10 +7,11 @@
 //
 
 import Foundation
+import SDWebImage
 
 class HomeLineViewModel {
     
-   lazy var homeLineModel = [HomeLineModel]()
+    lazy var homeLineModel = [HomeLineModel]()
     
 }
 
@@ -35,6 +36,33 @@ extension HomeLineViewModel{
             //print(dictArr)
             self.homeLineModel = dictArr+self.homeLineModel
             callback(true)
+            
+            //缓存单张图片
+            self.cacheSingleImg(modelArr: dictArr,finished: callback)
+        }
+    }
+    
+    func cacheSingleImg(modelArr:[HomeLineModel],finished:@escaping (_ isSuccess:Bool)->()) -> Void {
+        let group = DispatchGroup()
+        
+        //判断图片是否是单张
+        for model in modelArr{
+            if model.thumbnailUrls?.count != 1{
+                continue
+            }
+            // 获取URL
+            let url =  model.thumbnailUrls![0]
+            // 入组
+            group.enter()
+            
+            SDWebImageManager.shared().imageDownloader?.downloadImage(with: url, options: SDWebImageDownloaderOptions.useNSURLCache, progress: nil, completed: { (img, data, error, isSuccess) in
+                // 出组
+                group.leave()
+            })
+        }
+        //调度组完成
+        group.notify(queue: DispatchQueue.main) {
+            finished(true)
         }
     }
 }
