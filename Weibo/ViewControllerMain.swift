@@ -9,10 +9,10 @@
 import UIKit
 
 class ViewControllerMain: UITabBarController {
-
+    
     //撰写按钮
     lazy var profileBtn:UIButton = UIButton(iconName: "tabbar_compose_icon_add", backgroundIconName: "tabbar_compose_button")
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -45,7 +45,15 @@ extension ViewControllerMain{
     }
     
     @objc private func clickProfile() -> Void {
-        print("菜单栏+号，被点击了")
+        
+        var vc:UIViewController
+        if AccountInfoViewModel.shareInstance.isLoginStatus {
+            vc = ViewControllerAnnounce()
+        }else{
+            vc = ViewControllerOAuth()
+        }
+        let nav = UINavigationController(rootViewController: vc)
+        self.present(nav, animated: true, completion: nil)
     }
 }
 

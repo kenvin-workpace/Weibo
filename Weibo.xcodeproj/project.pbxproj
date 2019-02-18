@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		0A499E822216A48A00B88C2D /* ViewControllerAnnounce.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A499E812216A48A00B88C2D /* ViewControllerAnnounce.swift */; };
 		0A575D2622080D6D00C5D1A7 /* AccountInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D2522080D6D00C5D1A7 /* AccountInfo.swift */; };
 		0A575D2A220828E500C5D1A7 /* WeiboNet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D29220828E500C5D1A7 /* WeiboNet.swift */; };
 		0A575D2D22083C7B00C5D1A7 /* AccountInfoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D2C22083C7B00C5D1A7 /* AccountInfoViewModel.swift */; };
@@ -31,19 +32,29 @@
 		0A8324E222055D5E009D2E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8324E122055D5E009D2E94 /* Assets.xcassets */; };
 		0A8324F72205603B009D2E94 /* TableViewControllerMine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324F62205603B009D2E94 /* TableViewControllerMine.swift */; };
 		0A8324F922056045009D2E94 /* TableViewControllerHome.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324F822056045009D2E94 /* TableViewControllerHome.swift */; };
-		0A8324FB22056051009D2E94 /* TableViewControllerProfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324FA22056051009D2E94 /* TableViewControllerProfile.swift */; };
 		0A8324FD2205605B009D2E94 /* TableViewControllerDiscover.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324FC2205605B009D2E94 /* TableViewControllerDiscover.swift */; };
 		0A8324FF22056063009D2E94 /* TableViewControllerMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324FE22056063009D2E94 /* TableViewControllerMessage.swift */; };
 		0A8325032205A18E009D2E94 /* ViewControllerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8325022205A18E009D2E94 /* ViewControllerMain.swift */; };
 		0A8325072205A25F009D2E94 /* UIButton+Extendsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8325062205A25F009D2E94 /* UIButton+Extendsion.swift */; };
 		0A83250A2205A54E009D2E94 /* ViewControllerVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8325092205A54E009D2E94 /* ViewControllerVisitor.swift */; };
 		0A83250D2205A698009D2E94 /* UIViewVisitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A83250C2205A698009D2E94 /* UIViewVisitor.swift */; };
+		0A9671BD220F1F6500011862 /* RefreshControlDown.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A9671BC220F1F6500011862 /* RefreshControlDown.swift */; };
+		0A9671BF220F1F8D00011862 /* RefreshDownView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A9671BE220F1F8D00011862 /* RefreshDownView.xib */; };
 		0AC8492922071DA6000E7537 /* ViewControllerOAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC8492822071DA6000E7537 /* ViewControllerOAuth.swift */; };
+		0ADB0A7F2217F81100F977DF /* EmoticonAttachment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB0A752217F81100F977DF /* EmoticonAttachment.swift */; };
+		0ADB0A802217F81100F977DF /* String+Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB0A762217F81100F977DF /* String+Emoji.swift */; };
+		0ADB0A812217F81100F977DF /* UITextView+Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB0A772217F81100F977DF /* UITextView+Emoticon.swift */; };
+		0ADB0A822217F81100F977DF /* Emoticon.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB0A792217F81100F977DF /* Emoticon.swift */; };
+		0ADB0A832217F81100F977DF /* EmoticonManger.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB0A7A2217F81100F977DF /* EmoticonManger.swift */; };
+		0ADB0A842217F81100F977DF /* EmoticonPackages.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB0A7B2217F81100F977DF /* EmoticonPackages.swift */; };
+		0ADB0A852217F81100F977DF /* Emoticons.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 0ADB0A7C2217F81100F977DF /* Emoticons.bundle */; };
+		0ADB0A862217F81100F977DF /* CustomKeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB0A7E2217F81100F977DF /* CustomKeyboardView.swift */; };
 		1B9AC1BB8646A491AEC17B85 /* Pods_Weibo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 03A5D3895BB4C66C20F8FCB5 /* Pods_Weibo.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		03A5D3895BB4C66C20F8FCB5 /* Pods_Weibo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Weibo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		0A499E812216A48A00B88C2D /* ViewControllerAnnounce.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerAnnounce.swift; sourceTree = "<group>"; };
 		0A575D2522080D6D00C5D1A7 /* AccountInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfo.swift; sourceTree = "<group>"; };
 		0A575D29220828E500C5D1A7 /* WeiboNet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeiboNet.swift; sourceTree = "<group>"; };
 		0A575D2C22083C7B00C5D1A7 /* AccountInfoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountInfoViewModel.swift; sourceTree = "<group>"; };
@@ -70,14 +81,23 @@
 		0A8324E622055D5E009D2E94 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0A8324F62205603B009D2E94 /* TableViewControllerMine.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerMine.swift; sourceTree = "<group>"; };
 		0A8324F822056045009D2E94 /* TableViewControllerHome.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerHome.swift; sourceTree = "<group>"; };
-		0A8324FA22056051009D2E94 /* TableViewControllerProfile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerProfile.swift; sourceTree = "<group>"; };
 		0A8324FC2205605B009D2E94 /* TableViewControllerDiscover.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerDiscover.swift; sourceTree = "<group>"; };
 		0A8324FE22056063009D2E94 /* TableViewControllerMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TableViewControllerMessage.swift; sourceTree = "<group>"; };
 		0A8325022205A18E009D2E94 /* ViewControllerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerMain.swift; sourceTree = "<group>"; };
 		0A8325062205A25F009D2E94 /* UIButton+Extendsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIButton+Extendsion.swift"; sourceTree = "<group>"; };
 		0A8325092205A54E009D2E94 /* ViewControllerVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerVisitor.swift; sourceTree = "<group>"; };
 		0A83250C2205A698009D2E94 /* UIViewVisitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIViewVisitor.swift; sourceTree = "<group>"; };
+		0A9671BC220F1F6500011862 /* RefreshControlDown.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RefreshControlDown.swift; sourceTree = "<group>"; };
+		0A9671BE220F1F8D00011862 /* RefreshDownView.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = RefreshDownView.xib; sourceTree = "<group>"; };
 		0AC8492822071DA6000E7537 /* ViewControllerOAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerOAuth.swift; sourceTree = "<group>"; };
+		0ADB0A752217F81100F977DF /* EmoticonAttachment.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonAttachment.swift; sourceTree = "<group>"; };
+		0ADB0A762217F81100F977DF /* String+Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Emoji.swift"; sourceTree = "<group>"; };
+		0ADB0A772217F81100F977DF /* UITextView+Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UITextView+Emoticon.swift"; sourceTree = "<group>"; };
+		0ADB0A792217F81100F977DF /* Emoticon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoticon.swift; sourceTree = "<group>"; };
+		0ADB0A7A2217F81100F977DF /* EmoticonManger.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonManger.swift; sourceTree = "<group>"; };
+		0ADB0A7B2217F81100F977DF /* EmoticonPackages.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmoticonPackages.swift; sourceTree = "<group>"; };
+		0ADB0A7C2217F81100F977DF /* Emoticons.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = Emoticons.bundle; sourceTree = "<group>"; };
+		0ADB0A7E2217F81100F977DF /* CustomKeyboardView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomKeyboardView.swift; sourceTree = "<group>"; };
 		A3DB1089A898799B77F49CAF /* Pods-Weibo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo/Pods-Weibo.debug.xcconfig"; sourceTree = "<group>"; };
 		C06B8C86A665526587A2779B /* Pods-Weibo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Weibo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Weibo/Pods-Weibo.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -100,6 +120,14 @@
 				03A5D3895BB4C66C20F8FCB5 /* Pods_Weibo.framework */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		0A499E832216A4A000B88C2D /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				0A8324F822056045009D2E94 /* TableViewControllerHome.swift */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 		0A575D27220828C500C5D1A7 /* bean */ = {
@@ -188,9 +216,10 @@
 		0A8324EC22055D93009D2E94 /* classes */ = {
 			isa = PBXGroup;
 			children = (
+				0ADB0A88221A4BE800F977DF /* view */,
 				0A575D28220828C900C5D1A7 /* net */,
 				0A8325082205A523009D2E94 /* utils */,
-				0A8325042205A210009D2E94 /* view */,
+				0A8325042205A210009D2E94 /* ui */,
 				0A575D27220828C500C5D1A7 /* bean */,
 				0A575D2B22083C5D00C5D1A7 /* model */,
 				0A8325052205A216009D2E94 /* extension */,
@@ -225,7 +254,6 @@
 		0A8324F022055F88009D2E94 /* main */ = {
 			isa = PBXGroup;
 			children = (
-				0A83250B2205A683009D2E94 /* view */,
 				0A575D56220993E100C5D1A7 /* controller */,
 			);
 			name = main;
@@ -234,8 +262,8 @@
 		0A8324F122055F91009D2E94 /* home */ = {
 			isa = PBXGroup;
 			children = (
+				0A499E832216A4A000B88C2D /* controller */,
 				0A575D65220B3D7500C5D1A7 /* cell */,
-				0A8324F822056045009D2E94 /* TableViewControllerHome.swift */,
 			);
 			name = home;
 			sourceTree = "<group>";
@@ -267,12 +295,12 @@
 		0A8324F522056016009D2E94 /* profile */ = {
 			isa = PBXGroup;
 			children = (
-				0A8324FA22056051009D2E94 /* TableViewControllerProfile.swift */,
+				0A499E812216A48A00B88C2D /* ViewControllerAnnounce.swift */,
 			);
 			name = profile;
 			sourceTree = "<group>";
 		};
-		0A8325042205A210009D2E94 /* view */ = {
+		0A8325042205A210009D2E94 /* ui */ = {
 			isa = PBXGroup;
 			children = (
 				0A8324F022055F88009D2E94 /* main */,
@@ -282,7 +310,7 @@
 				0A8324F322055F9F009D2E94 /* discover */,
 				0A8324F222055F99009D2E94 /* message */,
 			);
-			name = view;
+			name = ui;
 			sourceTree = "<group>";
 		};
 		0A8325052205A216009D2E94 /* extension */ = {
@@ -304,10 +332,68 @@
 			name = utils;
 			sourceTree = "<group>";
 		};
-		0A83250B2205A683009D2E94 /* view */ = {
+		0A83250B2205A683009D2E94 /* visitorview */ = {
 			isa = PBXGroup;
 			children = (
 				0A83250C2205A698009D2E94 /* UIViewVisitor.swift */,
+			);
+			name = visitorview;
+			sourceTree = "<group>";
+		};
+		0A9671BB220F1F3300011862 /* refreshcotrol */ = {
+			isa = PBXGroup;
+			children = (
+				0A9671BC220F1F6500011862 /* RefreshControlDown.swift */,
+				0A9671BE220F1F8D00011862 /* RefreshDownView.xib */,
+			);
+			name = refreshcotrol;
+			sourceTree = "<group>";
+		};
+		0ADB0A742217F81100F977DF /* extension */ = {
+			isa = PBXGroup;
+			children = (
+				0ADB0A752217F81100F977DF /* EmoticonAttachment.swift */,
+				0ADB0A762217F81100F977DF /* String+Emoji.swift */,
+				0ADB0A772217F81100F977DF /* UITextView+Emoticon.swift */,
+			);
+			path = extension;
+			sourceTree = "<group>";
+		};
+		0ADB0A782217F81100F977DF /* bean */ = {
+			isa = PBXGroup;
+			children = (
+				0ADB0A792217F81100F977DF /* Emoticon.swift */,
+				0ADB0A7A2217F81100F977DF /* EmoticonManger.swift */,
+				0ADB0A7B2217F81100F977DF /* EmoticonPackages.swift */,
+			);
+			path = bean;
+			sourceTree = "<group>";
+		};
+		0ADB0A7D2217F81100F977DF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0ADB0A7E2217F81100F977DF /* CustomKeyboardView.swift */,
+			);
+			path = view;
+			sourceTree = "<group>";
+		};
+		0ADB0A872217F8DA00F977DF /* keyboard */ = {
+			isa = PBXGroup;
+			children = (
+				0ADB0A7C2217F81100F977DF /* Emoticons.bundle */,
+				0ADB0A742217F81100F977DF /* extension */,
+				0ADB0A782217F81100F977DF /* bean */,
+				0ADB0A7D2217F81100F977DF /* view */,
+			);
+			name = keyboard;
+			sourceTree = "<group>";
+		};
+		0ADB0A88221A4BE800F977DF /* view */ = {
+			isa = PBXGroup;
+			children = (
+				0ADB0A872217F8DA00F977DF /* keyboard */,
+				0A83250B2205A683009D2E94 /* visitorview */,
+				0A9671BB220F1F3300011862 /* refreshcotrol */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -383,6 +469,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				0A8324E222055D5E009D2E94 /* Assets.xcassets in Resources */,
+				0ADB0A852217F81100F977DF /* Emoticons.bundle in Resources */,
+				0A9671BF220F1F8D00011862 /* RefreshDownView.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -455,6 +543,7 @@
 			files = (
 				0A8324F922056045009D2E94 /* TableViewControllerHome.swift in Sources */,
 				0A6149F82206C546001FE21F /* UILabel+Extendsion.swift in Sources */,
+				0ADB0A822217F81100F977DF /* Emoticon.swift in Sources */,
 				0A575D69220B3E4F00C5D1A7 /* HomeCellTopView.swift in Sources */,
 				0A575D71220D6F5900C5D1A7 /* HomeCellRetweet.swift in Sources */,
 				0A8324F72205603B009D2E94 /* TableViewControllerMine.swift in Sources */,
@@ -464,11 +553,13 @@
 				0A8325032205A18E009D2E94 /* ViewControllerMain.swift in Sources */,
 				0A8324D822055D5D009D2E94 /* AppDelegate.swift in Sources */,
 				0A575D2A220828E500C5D1A7 /* WeiboNet.swift in Sources */,
+				0ADB0A812217F81100F977DF /* UITextView+Emoticon.swift in Sources */,
+				0ADB0A832217F81100F977DF /* EmoticonManger.swift in Sources */,
 				0A8325072205A25F009D2E94 /* UIButton+Extendsion.swift in Sources */,
 				0A6149FA2207024E001FE21F /* HttpUtil.swift in Sources */,
 				0A575D2622080D6D00C5D1A7 /* AccountInfo.swift in Sources */,
 				0AC8492922071DA6000E7537 /* ViewControllerOAuth.swift in Sources */,
-				0A8324FB22056051009D2E94 /* TableViewControllerProfile.swift in Sources */,
+				0ADB0A842217F81100F977DF /* EmoticonPackages.swift in Sources */,
 				0A575D67220B3D9E00C5D1A7 /* HomeCell.swift in Sources */,
 				0A8324FF22056063009D2E94 /* TableViewControllerMessage.swift in Sources */,
 				0A575D2D22083C7B00C5D1A7 /* AccountInfoViewModel.swift in Sources */,
@@ -478,12 +569,17 @@
 				0A575D5A220A8B8200C5D1A7 /* ViewControllerWelcome.swift in Sources */,
 				0A575D5522086EDF00C5D1A7 /* WeiboUtil.swift in Sources */,
 				0A575D60220B2BC700C5D1A7 /* HomeLineModel.swift in Sources */,
+				0A499E822216A48A00B88C2D /* ViewControllerAnnounce.swift in Sources */,
 				0A575D73220D7FFA00C5D1A7 /* HomeCellNormal.swift in Sources */,
 				0A575D6B220B3E5900C5D1A7 /* HomeCellBottomView.swift in Sources */,
 				0A83250D2205A698009D2E94 /* UIViewVisitor.swift in Sources */,
+				0A9671BD220F1F6500011862 /* RefreshControlDown.swift in Sources */,
+				0ADB0A862217F81100F977DF /* CustomKeyboardView.swift in Sources */,
 				0A575D5C220A8BB000C5D1A7 /* CommonUtil.swift in Sources */,
 				0A575D62220B372400C5D1A7 /* HomeLineViewModel.swift in Sources */,
+				0ADB0A7F2217F81100F977DF /* EmoticonAttachment.swift in Sources */,
 				0A575D6F220D322B00C5D1A7 /* HomeCellPicsView.swift in Sources */,
+				0ADB0A802217F81100F977DF /* String+Emoji.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

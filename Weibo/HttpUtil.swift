@@ -27,32 +27,39 @@ class HttpUtil: AFHTTPSessionManager {
 extension HttpUtil{
     
     func request(method : HttpMethod, url : String, params : [String : Any]?, complete :@escaping (_ result : Any?, _ error : Error?)->()){
-        
-        DispatchQueue.global().async {
-            //print("请求线程,\(Thread.current),请求参数:\(String(describing: params))")
-            
-            //成功回调
-            let successBlock  = {(task:URLSessionDataTask, result : Any) in
-                DispatchQueue.main.async {
-                    complete(result, nil)
-                    //print("返回线程,\(Thread.current),返回结果:\(result)")
-                }
-            }
-            
-            //失败回调
-            let failureBlock  = {(task:URLSessionDataTask?, error :Error) in
-                DispatchQueue.main.async {
-                    complete(nil, error)
-                    //print("返回线程,\(Thread.current),失败结果:\(error)")
-                }
-            }
-            
-            //区分GET、POSt请求
-            if method == .GET{
-                self.get(url, parameters: params, progress: nil, success: successBlock, failure: failureBlock)
-            }else{
-                self.post(url, parameters: params, progress: nil, success: successBlock, failure: failureBlock)
-            }
+        print("request,params=\(String(describing: params))")
+        //成功回调
+        let successBlock  = {(task:URLSessionDataTask, result : Any) in
+            complete(result, nil)
         }
+        
+        //失败回调
+        let failureBlock  = {(task:URLSessionDataTask?, error :Error) in
+             complete(nil, error)
+        }
+        
+        //区分GET、POSt请求
+        if method == .GET{
+            self.get(url, parameters: params, progress: nil, success: successBlock, failure: failureBlock)
+        }else  {
+            self.post(url, parameters: params, progress: nil, success: successBlock, failure: failureBlock)
+        }
+    }
+    
+    func upload(url : String, params : [String : Any]?,data: Data, name: String, complete :@escaping (_ result : Any?, _ error : Error?)->()){
+        //成功回调
+        let successBlock  = {(task:URLSessionDataTask, result : Any) in
+            complete(result, nil)
+        }
+        
+        //失败回调
+        let failureBlock  = {(task:URLSessionDataTask?, error :Error) in
+            complete(nil, error)
+        }
+        
+        post(url, parameters: params, constructingBodyWith: { (formdata) in
+            formdata.appendPart(withFileData: data, name: name, fileName: "xxx", mimeType: "application/octet-stream")
+            
+        }, progress: nil, success: successBlock, failure: failureBlock)
     }
 }

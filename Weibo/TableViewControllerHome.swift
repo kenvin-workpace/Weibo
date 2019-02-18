@@ -15,6 +15,13 @@ class TableViewControllerHome: ViewControllerVisitor {
     
     lazy var homeLineViewMode = HomeLineViewModel()
     
+    private lazy var pullUpView : UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.whiteLarge)
+        indicator.color = UIColor.lightGray
+        
+        return indicator
+    }()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -34,21 +41,33 @@ extension TableViewControllerHome{
         let homeModel = homeLineViewMode.homeLineModel[indexPath.row]
         let cell = tableView.dequeueReusableCell(withIdentifier: homeModel.selectCellID, for: indexPath) as! HomeCell
         cell.homeModel = homeModel
+        //判断是否是最后一条数据
+        if indexPath.row == homeLineViewMode.homeLineModel.count-1 && !pullUpView.isAnimating{
+            pullUpView.startAnimating()
+            init_load_home_data()
+        }
         return cell
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return homeLineViewMode.homeLineModel[indexPath.row].rowHeight
     }
- 
+    
 }
 
 /// MARK: 加载数据
 extension TableViewControllerHome{
     
-    private func init_load_home_data(){
+    @objc private func init_load_home_data(){
+        // 下拉刷新
+        refreshControl?.beginRefreshing()
         
-        homeLineViewMode.load_home_data { (isSuccess) in
+        homeLineViewMode.load_home_data(isPullUp: pullUpView.isAnimating) { (isSuccess) in
+            //下拉刷新关闭
+            self.refreshControl?.endRefreshing()
+            //上拉刷新关闭
+            self.pullUpView.stopAnimating()
+            
             if !isSuccess{
                 return
             }
@@ -72,5 +91,14 @@ extension TableViewControllerHome{
         tableView.separatorStyle = .none
         //预估行高
         tableView.estimatedRowHeight = 400
+        //下拉刷新
+        refreshControl = RefreshControlDown()
+        //添加下拉刷新监听事件
+        refreshControl?.addTarget(self, action: #selector(init_load_home_data), for: .valueChanged)
+        
+        //上拉刷新
+        tableView.tableFooterView = pullUpView
     }
+    
+    
 }

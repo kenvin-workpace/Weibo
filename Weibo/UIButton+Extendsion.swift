@@ -49,4 +49,15 @@ extension UIButton {
         //根据背景图片自适应大小
         sizeToFit()
     }
+    
+    convenience init(conName: String, backgroundIconName: String?) {
+        self.init()
+        setImage(UIImage(named: conName), for: .normal)
+        setImage(UIImage(named: conName + "_highlighted"), for: .highlighted)
+        
+        if let iconName = backgroundIconName {
+            setBackgroundImage(UIImage(named: iconName), for: .normal)
+            setBackgroundImage(UIImage(named: iconName + "_highlighted"), for: .highlighted)
+        }
+    }
 }

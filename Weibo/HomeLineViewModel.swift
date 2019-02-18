@@ -18,8 +18,13 @@ class HomeLineViewModel {
 extension HomeLineViewModel{
     
     /// 加载数据
-    func load_home_data(callback:@escaping (_ isSuccess:Bool)->()){
-        WeiboNet.shareInstance.homeTimeLine { (result) in
+    func load_home_data(isPullUp:Bool,callback:@escaping (_ isSuccess:Bool)->()){
+        // 下拉数据，数据内的第一条数据
+        let sinceid = isPullUp ? 0 : (homeLineModel.first?.homeline.id ?? 0)
+        // 上拉数据，数据内的最后一条数据
+        let maxid = isPullUp ? (homeLineModel.last?.homeline.id ?? 0) : 0
+        
+        WeiboNet.shareInstance.homeTimeLine(since_id: sinceid, max_id: maxid) { (result) in
             let resultDict = result as AnyObject
             guard let dicts = resultDict["statuses"] as? [[String:Any]] else{
                 print("TableViewControllerHome,method:init_load_home_data,error = guard let dict = resultDict..)")
@@ -34,9 +39,11 @@ extension HomeLineViewModel{
                 //print(HomeLine(dict: dict))
             }
             //print(dictArr)
-            self.homeLineModel = dictArr+self.homeLineModel
-            callback(true)
-            
+            if maxid > 0{
+                self.homeLineModel += dictArr
+            }else {
+                self.homeLineModel = dictArr + self.homeLineModel
+            }
             //缓存单张图片
             self.cacheSingleImg(modelArr: dictArr,finished: callback)
         }
