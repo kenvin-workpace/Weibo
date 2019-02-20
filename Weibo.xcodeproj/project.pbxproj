@@ -27,6 +27,9 @@
 		0A575D73220D7FFA00C5D1A7 /* HomeCellNormal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A575D72220D7FFA00C5D1A7 /* HomeCellNormal.swift */; };
 		0A6149F82206C546001FE21F /* UILabel+Extendsion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6149F72206C546001FE21F /* UILabel+Extendsion.swift */; };
 		0A6149FA2207024E001FE21F /* HttpUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A6149F92207024E001FE21F /* HttpUtil.swift */; };
+		0A7975BB221BE13900180E6A /* UIImage+Scale.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7975B9221BE13900180E6A /* UIImage+Scale.swift */; };
+		0A7975BC221BE13900180E6A /* CollectionViewSelectPic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7975BA221BE13900180E6A /* CollectionViewSelectPic.swift */; };
+		0A7975C0221BF6A600180E6A /* ViewControllerBrowsePic.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A7975BF221BF6A600180E6A /* ViewControllerBrowsePic.swift */; };
 		0A8324D822055D5D009D2E94 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324D722055D5D009D2E94 /* AppDelegate.swift */; };
 		0A8324E022055D5D009D2E94 /* Weibo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 0A8324DE22055D5D009D2E94 /* Weibo.xcdatamodeld */; };
 		0A8324E222055D5E009D2E94 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A8324E122055D5E009D2E94 /* Assets.xcassets */; };
@@ -74,6 +77,9 @@
 		0A575D72220D7FFA00C5D1A7 /* HomeCellNormal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeCellNormal.swift; sourceTree = "<group>"; };
 		0A6149F72206C546001FE21F /* UILabel+Extendsion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UILabel+Extendsion.swift"; sourceTree = "<group>"; };
 		0A6149F92207024E001FE21F /* HttpUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HttpUtil.swift; sourceTree = "<group>"; };
+		0A7975B9221BE13900180E6A /* UIImage+Scale.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+Scale.swift"; sourceTree = "<group>"; };
+		0A7975BA221BE13900180E6A /* CollectionViewSelectPic.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionViewSelectPic.swift; sourceTree = "<group>"; };
+		0A7975BF221BF6A600180E6A /* ViewControllerBrowsePic.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewControllerBrowsePic.swift; sourceTree = "<group>"; };
 		0A8324D422055D5D009D2E94 /* Weibo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Weibo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0A8324D722055D5D009D2E94 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0A8324DF22055D5D009D2E94 /* Weibo.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Weibo.xcdatamodel; sourceTree = "<group>"; };
@@ -181,6 +187,22 @@
 				0A575D6A220B3E5900C5D1A7 /* HomeCellBottomView.swift */,
 			);
 			name = cell;
+			sourceTree = "<group>";
+		};
+		0A7975BD221BE16800180E6A /* selectpic */ = {
+			isa = PBXGroup;
+			children = (
+				0A7975BA221BE13900180E6A /* CollectionViewSelectPic.swift */,
+			);
+			name = selectpic;
+			sourceTree = "<group>";
+		};
+		0A7975BE221BF67400180E6A /* browsepic */ = {
+			isa = PBXGroup;
+			children = (
+				0A7975BF221BF6A600180E6A /* ViewControllerBrowsePic.swift */,
+			);
+			name = browsepic;
 			sourceTree = "<group>";
 		};
 		0A8324CB22055D5D009D2E94 = {
@@ -316,6 +338,7 @@
 		0A8325052205A216009D2E94 /* extension */ = {
 			isa = PBXGroup;
 			children = (
+				0A7975B9221BE13900180E6A /* UIImage+Scale.swift */,
 				0A6149F72206C546001FE21F /* UILabel+Extendsion.swift */,
 				0A8325062205A25F009D2E94 /* UIButton+Extendsion.swift */,
 			);
@@ -391,6 +414,8 @@
 		0ADB0A88221A4BE800F977DF /* view */ = {
 			isa = PBXGroup;
 			children = (
+				0A7975BD221BE16800180E6A /* selectpic */,
+				0A7975BE221BF67400180E6A /* browsepic */,
 				0ADB0A872217F8DA00F977DF /* keyboard */,
 				0A83250B2205A683009D2E94 /* visitorview */,
 				0A9671BB220F1F3300011862 /* refreshcotrol */,
@@ -558,7 +583,9 @@
 				0A8325072205A25F009D2E94 /* UIButton+Extendsion.swift in Sources */,
 				0A6149FA2207024E001FE21F /* HttpUtil.swift in Sources */,
 				0A575D2622080D6D00C5D1A7 /* AccountInfo.swift in Sources */,
+				0A7975C0221BF6A600180E6A /* ViewControllerBrowsePic.swift in Sources */,
 				0AC8492922071DA6000E7537 /* ViewControllerOAuth.swift in Sources */,
+				0A7975BB221BE13900180E6A /* UIImage+Scale.swift in Sources */,
 				0ADB0A842217F81100F977DF /* EmoticonPackages.swift in Sources */,
 				0A575D67220B3D9E00C5D1A7 /* HomeCell.swift in Sources */,
 				0A8324FF22056063009D2E94 /* TableViewControllerMessage.swift in Sources */,
@@ -568,6 +595,7 @@
 				0A83250A2205A54E009D2E94 /* ViewControllerVisitor.swift in Sources */,
 				0A575D5A220A8B8200C5D1A7 /* ViewControllerWelcome.swift in Sources */,
 				0A575D5522086EDF00C5D1A7 /* WeiboUtil.swift in Sources */,
+				0A7975BC221BE13900180E6A /* CollectionViewSelectPic.swift in Sources */,
 				0A575D60220B2BC700C5D1A7 /* HomeLineModel.swift in Sources */,
 				0A499E822216A48A00B88C2D /* ViewControllerAnnounce.swift in Sources */,
 				0A575D73220D7FFA00C5D1A7 /* HomeCellNormal.swift in Sources */,

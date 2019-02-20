@@ -14,6 +14,15 @@ let COMMON_COLOR_ORANGE:UIColor = UIColor.orange
 /// 通知对象
 let CUSTOM_SWITCH_NOTIFICATIONCENTER = NSNotification.Name(rawValue: "CUSTOM_SWITCH_NOTIFICATIONCENTER")
 
+/// 选择照片的urls
+let SELECT_PICTURE_URLS = "SELECT_PICTURE_URLS"
+
+/// 选择照片的indexPath
+let SELECT_PICTURE_INDEXPATH = "SELECT_PICTURE_INDEXPATH"
+
+/// 选择照片的notification
+let SELECT_PICTURE_NOTIFICATION = NSNotification.Name(rawValue: "SELECT_PICTURE_NOTIFICATION")
+
 class CommonUtil {
     
     static let shareInstance = CommonUtil()

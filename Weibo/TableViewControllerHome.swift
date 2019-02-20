@@ -27,6 +27,14 @@ class TableViewControllerHome: ViewControllerVisitor {
         
         init_view_setting()
         init_load_home_data()
+        init_register_notification()
+    }
+    
+    private func init_register_notification(){
+        NotificationCenter.default.addObserver(forName: SELECT_PICTURE_NOTIFICATION, object: nil, queue: OperationQueue.main) { (n) in
+            let vc = ViewControllerBrowsePic()
+            self.present(vc, animated: true, completion: nil)
+        }
     }
 }
 

@@ -18,7 +18,9 @@ class ViewControllerAnnounce: UIViewController {
     
     
     override func viewWillAppear(_ animated: Bool) {
-        inputTextView.becomeFirstResponder()
+        if selectPicView.view.bounds.height == 0 {
+            inputTextView.becomeFirstResponder()
+        }
     }
     
     /// toolbar view
@@ -26,6 +28,8 @@ class ViewControllerAnnounce: UIViewController {
     /// input textView
     private lazy var inputTextView : UITextView = {
         let textview = UITextView()
+        // 字体大小
+        textview.font = UIFont.systemFont(ofSize: 14)
         // 允许始终垂直滚动
         textview.alwaysBounceVertical = true
         // 拖拽关闭键盘
@@ -43,6 +47,10 @@ class ViewControllerAnnounce: UIViewController {
     private lazy var emoticonview = CustomKeyboardView {[weak self] (emoticon) in
         self?.inputTextView.showTextPic(emoticon: emoticon)
     }
+    /// 选择图片视图
+    private lazy var selectPicView = CollectionViewSelectPic()
+    
+    private lazy var offect = CommonUtil.shareInstance.getStatusNavBarHeight(nav:navigationController)
 }
 // MARK: View 点击事件
 extension ViewControllerAnnounce{
@@ -64,7 +72,7 @@ extension ViewControllerAnnounce{
     
     /// 表情按钮
     @objc func emoticonItem(){
-       // 退出键盘
+        // 退出键盘
         inputTextView.resignFirstResponder()
         // 设置键盘
         inputTextView.inputView = inputTextView.inputView == nil ? emoticonview : nil
@@ -72,12 +80,38 @@ extension ViewControllerAnnounce{
         inputTextView.becomeFirstResponder()
     }
     
+    /// 图片按钮
+    @objc func pictureItem(){
+        print(selectPicView.view.frame)
+        // 退出键盘
+        inputTextView.resignFirstResponder()
+        // 是否已显示照片选择
+        if selectPicView.view.frame.height > 0{
+            return
+        }
+        // 修改选择照片显示视图
+        selectPicView.view.snp.updateConstraints { (make) in
+            make.height.equalTo(view.bounds.height*0.6)
+        }
+        inputTextView.snp.remakeConstraints { (make) in
+            make.top.equalTo(view.snp.top).offset(offect)
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.bottom.equalTo(selectPicView.view.snp.top)
+        }
+        // 动画更新约束
+        UIView.animate(withDuration: 0.5) {
+            self.view.layoutIfNeeded()
+        }
+    }
+    
     /// 键盘显示/隐藏
     @objc func showHideKeyboard(n:Notification){
         // 键盘高度
         let rect = (n.userInfo![UIResponder.keyboardFrameEndUserInfoKey] as! NSValue).cgRectValue
+        let offset = -UIScreen.main.bounds.height + rect.origin.y
         toolbar.snp.updateConstraints { (make) in
-            make.bottom.equalTo(view.snp.bottom).offset(-rect.height)
+            make.bottom.equalTo(view.snp.bottom).offset(offset)
         }
         
         // 键盘动画曲线
@@ -110,6 +144,7 @@ extension ViewControllerAnnounce{
         init_input_textview()
         init_placeholderlabel_view()
         init_notification_keyboard()
+        init_select_picture_view()
     }
     
     /// navigationItem view
@@ -142,6 +177,7 @@ extension ViewControllerAnnounce{
     
     /// toolbar view
     func init_toolbar_view(){
+        toolbar.backgroundColor = UIColor(white: 0.8, alpha: 1)
         // 添加tollbar，并设置自动布局
         view.addSubview(toolbar)
         toolbar.snp.makeConstraints { (make) in
@@ -151,10 +187,10 @@ extension ViewControllerAnnounce{
             make.height.equalTo(44)
         }
         // 添加图片按钮
-        let itemSettings = [["imageName": "compose_toolbar_picture"],
+        let itemSettings = [["imageName": "compose_toolbar_picture", "actionName": "pictureItem"],
                             ["imageName": "compose_mentionbutton_background"],
                             ["imageName": "compose_trendbutton_background"],
-                            ["imageName": "compose_emoticonbutton_background", "actionName": "selectEmoticon"],
+                            ["imageName": "compose_emoticonbutton_background", "actionName": "emoticonItem"],
                             ["imageName": "compose_addbutton_background"]]
         var itemArr = [UIBarButtonItem]()
         for item in itemSettings{
@@ -164,8 +200,16 @@ extension ViewControllerAnnounce{
             // 添加可变弹簧
             itemArr.append(UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil))
             // 能否添加点击事件
-            if item["actionName"] != nil {
+            guard let event = item["actionName"] else {
+                continue
+            }
+            switch event{
+            case "emoticonItem":
                 btn.addTarget(self, action: #selector(emoticonItem), for: .touchUpInside)
+            case "pictureItem":
+                btn.addTarget(self, action: #selector(pictureItem), for: .touchUpInside)
+            default:
+                print("event is failed")
             }
         }
         itemArr.removeLast()
@@ -176,7 +220,7 @@ extension ViewControllerAnnounce{
     func init_input_textview(){
         view.addSubview(inputTextView)
         inputTextView.snp.makeConstraints { (make) in
-            make.top.equalTo(view.snp.top).offset(CommonUtil.shareInstance.getStatusNavBarHeight(nav:navigationController))
+            make.top.equalTo(view.snp.top).offset(offect)
             make.left.equalTo(view.snp.left)
             make.right.equalTo(view.snp.right)
             make.bottom.equalTo(toolbar.snp.top)
@@ -195,5 +239,20 @@ extension ViewControllerAnnounce{
     /// notification keyboard
     func init_notification_keyboard(){
         NotificationCenter.default.addObserver(self, selector: #selector(showHideKeyboard(n:)), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+    }
+    
+    /// select picture view
+    func init_select_picture_view(){
+        // 添加子控件
+        addChild(selectPicView)
+        // 添加视图
+        view.insertSubview(selectPicView.view, belowSubview: toolbar)
+        // 自动布局
+        selectPicView.view.snp.makeConstraints { (make) in
+            make.left.equalTo(view.snp.left)
+            make.right.equalTo(view.snp.right)
+            make.bottom.equalTo(view.snp.bottom)
+            make.height.equalTo(0)
+        }
     }
 }

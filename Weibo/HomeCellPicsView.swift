@@ -40,7 +40,7 @@ class HomeCellPicsView: UICollectionView {
     
 }
 
-extension HomeCellPicsView : UICollectionViewDataSource{
+extension HomeCellPicsView : UICollectionViewDataSource,UICollectionViewDelegate{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         return homeModel?.thumbnailUrls?.count ?? 0
     }
@@ -49,6 +49,14 @@ extension HomeCellPicsView : UICollectionViewDataSource{
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: HomeCellPicsView_Cell_ID, for: indexPath) as! HomeCellPicsViewCell
         cell.imgUrl = homeModel?.thumbnailUrls?[indexPath.item]
         return cell
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        print("didSelectItemAt:\(indexPath.item)")
+        
+        let userInfo:[String:Any] = [SELECT_PICTURE_INDEXPATH:indexPath,SELECT_PICTURE_URLS:homeModel!.thumbnailUrls!]
+        NotificationCenter.default.post(name: SELECT_PICTURE_NOTIFICATION, object: self, userInfo: userInfo)
     }
 }
 
@@ -92,6 +100,8 @@ extension HomeCellPicsView{
         backgroundColor = UIColor.clear
         // 设置数据源
         dataSource = self
+        // 设置代理
+        delegate = self
         // 注册可重用cell
         register(HomeCellPicsViewCell.self, forCellWithReuseIdentifier: HomeCellPicsView_Cell_ID)
     }

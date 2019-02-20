@@ -23,7 +23,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow()
         window?.frame = UIScreen.main.bounds
         window?.backgroundColor = UIColor.white
-        window?.rootViewController = selectViewController
+        window?.rootViewController = ViewControllerBrowsePic()
         window?.makeKeyAndVisible()
         /// 根据通知切换根视图
         switchVc()
